@@ -7,14 +7,47 @@ namespace Lab_3._3
     {
         static void Main(string[] args)
         {
-            string input;
-            
+            do
+            {
+                string input;
+                string[] myArr;
+                bool valid = true;
 
-            Console.Write("Please enter a word you would like to reverse: ");
 
-            input = Console.ReadLine();
+                Console.Write("Please enter a sentence (no punctuation) you would like to reverse: ");
 
-            Console.WriteLine("Your word reversed is: {0}",ReverseString(input)); 
+                input = Console.ReadLine();
+
+                do
+                {
+                    for (int i = 0; i < input.Length; i++)
+                    {
+                        if (!"qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ".Contains(input[i]))
+                        {
+                            Console.Write("Invalid input! Please enter a sentence (no punctuation) you would like to reverse: ");
+
+                            input = Console.ReadLine();
+                            valid = false;
+                            break;
+                        }
+                        else
+                        {
+                            valid = true;
+                        }
+                    }
+
+                } while (!valid);
+
+                myArr = input.Split(" ");
+
+                Console.Write("Your sentence reversed is: ");
+                for (int i = 0; i < myArr.Length; i++)
+                {
+                    Console.Write($"{ReverseString(myArr[i])} ");
+                }
+                Console.WriteLine();
+            } while (true);
+            //Console.WriteLine("Your word reversed is: {0}",ReverseString(input)); 
             
         }
 
